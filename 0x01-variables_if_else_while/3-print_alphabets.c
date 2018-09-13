@@ -7,7 +7,6 @@
 int main(void)
 {
 	char a;
-	char b;
 
 	a = 'a';
 	while (a <= 'z')
@@ -15,13 +14,13 @@ int main(void)
 		putchar(a);
 		a++;
 	}
-	b = 'A';
+	a = 'A';
 	while (b <= 'Z')
 	{
 		putchar(b);
 		b++;
 	}
-	printf("\n");
+	putchar("\n");
 
 	return (0);
 }

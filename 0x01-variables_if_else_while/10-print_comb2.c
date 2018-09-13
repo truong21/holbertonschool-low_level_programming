@@ -17,13 +17,20 @@ int main(void)
 		{
 			putchar(a);
 			putchar(b);
-			putchar(44);
-			putchar(32);
+			if ((a == 57) && (b == 57))
+			{
+				break;
+			}
+			else
+			{
+				putchar(44);
+				putchar(32);
+			}
 			b++;
 		}
 		a++;
 	}
-	putchar(10);
+	putchar('\n');
 
 	return (0);
 }

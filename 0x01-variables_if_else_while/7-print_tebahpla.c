@@ -12,7 +12,7 @@ int main(void)
 	{
 		putchar(a);
 	}
-	printf("\n");
+	putchar(10);
 
 	return (0);
 }

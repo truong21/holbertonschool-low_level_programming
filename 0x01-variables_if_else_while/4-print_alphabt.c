@@ -18,7 +18,7 @@ int main(void)
 			a++;
 		}
 	}
-	printf("\n");
+	putchar(10);
 
 	return (0);
 }

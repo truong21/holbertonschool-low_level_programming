@@ -7,5 +7,31 @@
  */
 void times_table(void)
 {
-	int n
+	int a, b, p;
+	
+	a = b = 0;
+	while (a < 10)
+	{
+		while (b < 10)
+		{
+			p = a * b;
+			if (p < 10)
+				_putchar(p + '0');
+			else
+			{
+				_putchar((p/10) + '0');
+				_putchar((p%10) + '0');
+			}
+			if (b != 9)
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar(' ');
+			}
+			b++;
+		}
+		_putchar('\n');
+		a++;
+		b = 0;
+	}
 }

@@ -9,10 +9,10 @@ void jack_bauer(void)
 {
 	int i, j, k, n;
 
-	i = j = k =  n = 0;
+	i = j = k = n = 0;
 	while (i < 3)
 	{
-		while (j < 4)
+		while (j < 9) 
 		{
 			while (k < 6)
 			{
@@ -31,6 +31,8 @@ void jack_bauer(void)
 			}
 			j++;
 			k = 0;
+			if ((i == 2) && (j == 4))
+				break;
 		}
 		i++;
 		j = 0;

@@ -16,7 +16,9 @@ int main(void)
 	for (i = 1; i < 49; i++)
 	{
 		n = prev + prev_prev;
-		printf("%ld, ", n);
+		printf("%ld", n);
+		if (i != 48)
+			printf(", ");
 		prev_prev = prev;
 		prev = n;
 	}

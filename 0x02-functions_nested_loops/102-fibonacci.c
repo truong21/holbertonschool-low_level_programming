@@ -13,9 +13,9 @@ int main(void)
 	prev_prev = 1;
 	prev = 2;
 	printf("1, 2, ");
-	for (i = 1; i < 48; i++)
+	for (i = 1; i < 49; i++)
 	{
-		n = prev + prev_prev; 
+		n = prev + prev_prev;
 		printf("%ld, ", n);
 		prev_prev = prev;
 		prev = n;

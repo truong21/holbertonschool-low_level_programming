@@ -7,19 +7,13 @@
  */
 int main(void)
 {
-	int mult_3, mult_5, total;
-	int i;
+	int i, total;
 
-	mult_3 = mult_5 = total = 0;
-	for (i = 0;  mult_3 < 1023; i++)
+	total = 0;
+	for (i = 0; i < 1024; i++)
 	{
-		mult_3 = i * 3;
-		total += mult_3;
-	}
-	for (i = 0;  mult_5 < 1020; i++)
-	{
-		mult_5 = i * 5;
-		total += mult_5;
+		if (((i % 5) == 0) || (i % 3) == 0)
+			total += i;
 	}
 	printf("%d\n", total);
 	return (0);

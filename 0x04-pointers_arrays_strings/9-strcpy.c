@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
 
 /**
  * _strcpy - copies the string pointed by src including the null byte

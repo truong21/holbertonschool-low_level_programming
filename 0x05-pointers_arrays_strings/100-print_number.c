@@ -8,15 +8,20 @@
  */
 void print_number(int n)
 {
-	unsigned int rev;
+	char last_digit;
+	int rev;
 
 	if (n < 0)
 	{
 		_putchar('-');
-		n *= -1;
+		last_digit = ('0' - (n % 10));
+		n /= -10;
 	}
-	if (n == 0)
-		_putchar(n + '0');
+	else
+	{
+		last_digit = ((n % 10) + '0');
+		n /= 10;
+	}
 	rev = 0;
 	while (n > 0)
 	{
@@ -28,4 +33,5 @@ void print_number(int n)
 		_putchar((rev % 10) + '0');
 		rev /= 10;
 	}
+	_putchar(last_digit);
 }

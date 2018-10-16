@@ -3,7 +3,7 @@
 
 /**
  * free_dog - free dogs
- * @d - pointer to struct dog
+ * @d: pointer to struct dog
  * Return: Nothing
  */
 void free_dog(dog_t *d)

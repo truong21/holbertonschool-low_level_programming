@@ -4,8 +4,8 @@
 #include "3-calc.h"
 /**
  * main - performs arithmetic operations
- * @argc - argument count
- * @argv - integers and operater
+ * @argc: argument count
+ * @argv: integers and operater
  * Return: 0 (Success); 98, 99, or 100 otherwise
  */
 int main(int argc, char *argv[])

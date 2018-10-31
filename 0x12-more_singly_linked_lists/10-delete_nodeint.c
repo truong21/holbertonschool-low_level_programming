@@ -5,7 +5,6 @@
  * linked list
  * @head: double pointer to head node
  * @index: index of the list where the node should be deleted
- * @n: integer to be added to new node
  * Return: 1 (Success); -1 (Fail)
  */
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
@@ -26,6 +25,8 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	for (i = 0; i < (index - 1); i++)
 	{
 		tmp = tmp->next;
+		if (tmp == NULL)
+			return (-1);
 		tmp2 = tmp2->next;
 	}
 	tmp->next = tmp2->next;

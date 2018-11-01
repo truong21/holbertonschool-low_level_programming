@@ -8,24 +8,26 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int i;
-	/* int size; */
+	unsigned long int temp;
+	int count, flag;
 
-	/* size = sizeof(unsigned long int) * 8 - 1; */
-	for (i = 1 << 30; i > 0; i = i >> 1)
+	count = sizeof(unsigned long int) * 8 - 1;
+	flag = 0;
+	while (count >= 0)
 	{
-		if (n & i)
-			break;
-		else if (i == 1)
-			_putchar('0');
-	}
-	for (; i > 0; i = i >> 1)
-	{
-		if (n & i)
+		temp = n >> count;
+		if (temp & 1)
 		{
+			flag = 1;
 			_putchar('1');
 		}
 		else
-			_putchar('0');
+		{
+			if (flag == 1)
+				_putchar('0');
+		}
+		count--;
 	}
+	if (n == 0)
+		_putchar('0');
 }

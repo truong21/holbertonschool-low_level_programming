@@ -8,8 +8,10 @@
 void print_binary(unsigned long int n)
 {
 	unsigned long int i;
+	unsigned long int size;
 
-	for (i = 1 << 30; i > 0; i = i >> 1)
+	size = sizeof(unsigned long int) * 8 - 1;
+	for (i = 1 << size; i > 0; i = i >> 1)
 	{
 		if (n & i)
 			break;

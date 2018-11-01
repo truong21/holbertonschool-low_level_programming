@@ -19,27 +19,12 @@ unsigned int binary_to_uint(const char *b)
 		if (b[i] != '1' && b[i] != '0')
 			return (0);
 	}
-	k = i - 1;
-	for (j = 0; j <= i; j++)
+	k = 0;
+	for (j = i - 1; j >= 0; j--)
 	{
 		if (b[j] == '1')
-			uint += _pow(2, k);
-		k--;
+			uint += 1 << k;
+		k++;
 	}
 	return (uint);
-}
-/**
- * _pow - returns x raised to the power of y
- * @x: base
- * @y: exponent
- * Return: x raised to power of y
- */
-unsigned int _pow(int x, int y)
-{
-	if (y < 0)
-		return (-1);
-	else if (y == 0)
-		return (1);
-	else
-		return (x * _pow(x, y - 1));
 }

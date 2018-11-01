@@ -1,5 +1,6 @@
 #include "holberton.h"
 #include <stdio.h>
+#include <limits.h>
 /**
  * print_binary - prints the binary representation of a number
  * @n: number
@@ -8,10 +9,10 @@
 void print_binary(unsigned long int n)
 {
 	unsigned long int i;
-	unsigned long int size;
+	/* int size; */
 
-	size = sizeof(unsigned long int) * 8 - 1;
-	for (i = 1 << size; i > 0; i = i >> 1)
+	/* size = sizeof(unsigned long int) * 8 - 1; */
+	for (i = 1 << 30; i > 0; i = i >> 1)
 	{
 		if (n & i)
 			break;

@@ -11,6 +11,8 @@ int get_bit(unsigned long int n, unsigned int index)
 	unsigned long int temp;
 	int bit;
 
+	if (n > 4294967295)
+		return (-1);
 	temp = n >> index;
 	if (temp & 1)
 		bit = 1;

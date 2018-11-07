@@ -14,7 +14,7 @@
  */
 int main(int ac, char **av)
 {
-	int fd_from, fd_to, rd, wrt, cl;
+	int fd_from, fd_to, rd = 1, wrt, cl;
 	char *buffer;
 
 	if (ac != 3)
@@ -28,22 +28,25 @@ int main(int ac, char **av)
 	buffer = malloc(sizeof(char) * 1024);
 	if (buffer == NULL)
 		return (0);
-	rd = 1;
 	while (rd > 0)
 	{
 		rd = read(fd_from, buffer, 1024);
 		if (rd == -1)
+		{
+			free(buffer);
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]), exit(98);
+		}
 		if (rd > 0)
 		{
-			wrt = write(fd_to, buffer, 1024);
+			wrt = write(fd_to, buffer, rd);
 			if (wrt == -1)
 			{
-				dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
-				exit(99);
+				free(buffer);
+				dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]), exit(99);
 			}
 		}
 	}
+	free(buffer);
 	cl = close(fd_from);
 	if (cl == -1)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from), exit(100);

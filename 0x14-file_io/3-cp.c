@@ -5,7 +5,6 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
-#define BUFFSIZE 1024
 
 /**
  * main - copies the content of a file to another file
@@ -15,26 +14,29 @@
  */
 int main(int ac, char **av)
 {
-	int file_from, file_to, rd, wrt, cl;
-	char buffer[BUFFSIZE];
+	int fd_from, fd_to, rd, wrt, cl;
+	char *buffer;
 
 	if (ac != 3)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
-	file_from = open(av[1], O_RDONLY);
-	if (file_from == -1)
+	fd_from = open(av[1], O_RDONLY);
+	if (fd_from == -1)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]), exit(98);
-	file_to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 00600 | 00060 | 00004);
-	if (file_to == -1)
+	fd_to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 00600 | 00060 | 00004);
+	if (fd_to == -1)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]), exit(99);
+	buffer = malloc(sizeof(char) * 1024);
+	if (buffer == NULL)
+		return (0);
 	rd = 1;
-	while (rd)
+	while (rd > 0)
 	{
-		rd = read(file_from, buffer, BUFFSIZE);
+		rd = read(fd_from, buffer, 1024);
 		if (rd == -1)
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]), exit(98);
-		if (rd)
+		if (rd > 0)
 		{
-			wrt = write(file_to, buffer, BUFFSIZE);
+			wrt = write(fd_to, buffer, 1024);
 			if (wrt == -1)
 			{
 				dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
@@ -42,11 +44,11 @@ int main(int ac, char **av)
 			}
 		}
 	}
-	cl = close(file_from);
+	cl = close(fd_from);
 	if (cl == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from), exit(100);
-	cl = close(file_to);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from), exit(100);
+	cl = close(fd_to);
 	if (cl == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to), exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to), exit(100);
 	return (0);
 }

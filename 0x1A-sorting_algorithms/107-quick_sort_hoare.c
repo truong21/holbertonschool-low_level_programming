@@ -14,7 +14,7 @@ void quick_sort_hoare(int *array, size_t size)
 }
 
 /**
- * q_sort - recursion function with more parameters to sort
+ * q_sort_hoare - recursion function with more parameters to sort
  * @array: a pointer to the first element of the array
  * @low: bottom index of partition
  * @high: top index of partition
@@ -33,7 +33,7 @@ void q_sort_hoare(int *array, int low, int high, size_t size)
 }
 
 /**
- * partition - partitions the array
+ * partition_hoare - partitions the array
  * @array: a pointer to the beginning of the array
  * @low: starting point of array
  * @high: ending point of array
@@ -49,7 +49,7 @@ int partition_hoare(int *array, int low, int high, size_t size)
 	j = high + 1;
 	while (1)
 	{
-		do{
+		do {
 			i++;
 		} while (array[i] < piv);
 		do {

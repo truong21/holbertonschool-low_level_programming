@@ -12,19 +12,19 @@ def island_perimeter(grid):
     if len(grid) == 0 or len(grid) > 100:
         return total
     lrow = len(grid[0])
-    for i in range(0, len(grid)):
-        if len(grid[i]) != lrow or i > 99:
+    for row in range(len(grid)):
+        if len(grid[row]) != lrow or row > 99:
             return 0
-        for j in range(len(grid[i])):
-            if grid[i][j] == 1:
+        for column in range(len(grid[row])):
+            if grid[row][column] == 1:
                 perimeter = 4
-                if grid[i][j - 1] == 1:
+                if grid[row][column - 1] == 1:
                     perimeter -= 1
-                if grid[i][j + 1] == 1:
+                if grid[row][column + 1] == 1:
                     perimeter -= 1
-                if grid[i - 1][j] == 1:
+                if grid[row - 1][column] == 1:
                     perimeter -= 1
-                if grid[i + 1][j] == 1:
+                if grid[row + 1][column] == 1:
                     perimeter -= 1
                 total += perimeter
     return total

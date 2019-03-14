@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * max_h - computes the max depth of the two child nodes
+ * max - computes the max depth of the two child nodes
  * @a: depth of left node
  * @b: depth of right node
  * Return: max
